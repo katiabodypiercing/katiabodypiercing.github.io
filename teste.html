@@ -1,0 +1,55 @@
+<script>
+const repo = "katiabodypiercing/Katiabodypiercing";
+const folder = "promo";
+
+let images = [];
+let currentIndex = 0;
+
+fetch(`https://api.github.com/repos/${repo}/contents/${folder}`)
+.then(res => res.json())
+.then(data => {
+
+    const gallery = document.getElementById("gallery");
+
+    const files = data.filter(file => file.type === "file");
+
+    files.forEach((file, index) => {
+
+        // 🔥 CDN RÁPIDA (jsDelivr)
+        const url = `https://cdn.jsdelivr.net/gh/${repo}/${folder}/${file.name}`;
+
+        images.push(url);
+
+        const img = document.createElement("img");
+        img.src = url;
+
+        // 🚀 carrega só quando aparece
+        img.loading = "lazy";
+
+        img.onclick = () => openLightbox(index);
+
+        gallery.appendChild(img);
+    });
+});
+
+// LIGHTBOX
+function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = images[index];
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+</script>
