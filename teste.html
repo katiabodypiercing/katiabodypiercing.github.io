@@ -1,5 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joias - Kátia Body Piercing</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* SETAS */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+    background: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<h2>🔥 Joias da Promo 🔥</h2>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">✖</span>
+    <span class="prev" onclick="prevImage()">&#10094;</span>
+    <img id="lightbox-img">
+    <span class="next" onclick="nextImage()">&#10095;</span>
+</div>
+
 <script>
-const repo = "katiabodypiercing/Katiabodypiercing";
+const repo = "katiabodypiercing/katiabodypiercing.github.io";
 const folder = "promo";
 
 let images = [];
@@ -15,15 +112,12 @@ fetch(`https://api.github.com/repos/${repo}/contents/${folder}`)
 
     files.forEach((file, index) => {
 
-        // 🔥 CDN RÁPIDA (jsDelivr)
         const url = `https://cdn.jsdelivr.net/gh/${repo}/${folder}/${file.name}`;
 
         images.push(url);
 
         const img = document.createElement("img");
         img.src = url;
-
-        // 🚀 carrega só quando aparece
         img.loading = "lazy";
 
         img.onclick = () => openLightbox(index);
@@ -53,3 +147,6 @@ function prevImage() {
     document.getElementById("lightbox-img").src = images[currentIndex];
 }
 </script>
+
+</body>
+</html>
