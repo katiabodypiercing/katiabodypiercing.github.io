@@ -1,4 +1,40 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll toca áudio</title>
+  <style>
+    body {
+      height: 2000px; /* só pra permitir rolagem */
+    }
+  </style>
+</head>
+<body>
+
+<audio id="audio">
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let tocou = false;
+
+window.addEventListener("scroll", () => {
+  if (!tocou) {
+    const audio = document.getElementById("audio");
+    audio.play().catch(err => {
+      console.log("Bloqueado pelo navegador:", err);
+    });
+    tocou = true;
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
