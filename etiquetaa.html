@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Etiqueta Final</title>
+
+<style>
+@media print {
+  body { margin: 0; }
+}
+
+body {
+  margin: 10mm;
+  font-family: Arial, sans-serif;
+}
+
+/* A4 */
+.folha {
+  display: grid;
+  grid-template-columns: repeat(2, 7cm);
+  grid-auto-rows: 3.8cm;
+  gap: 3mm;
+  justify-content: center;
+}
+
+/* Etiqueta */
+.etiqueta {
+  width: 7cm;
+  height: 3.8cm;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 2px 18px 2px 4px;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+}
+
+/* Topo */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+.modelo {
+  font-size: 18px;
+}
+
+/* Bloco */
+.bloco {
+  display: flex;
+  margin-top: 1px;
+}
+
+/* Esquerda */
+.esq {
+  border: 1px solid #000;
+  width: 54%;
+  font-size: 8px;
+}
+
+.esq div {
+  padding: 1px 3px;
+}
+
+.linha {
+  border-top: 1.2px solid #000;
+}
+
+.direita {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Direita */
+.dir {
+  border: 1px solid #000;
+  width: 46%;
+  margin-left: 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.dir .v { font-size: 20px; }
+.dir .hz { font-size: 14px; }
+
+/* Rodapé */
+.rodape {
+  font-size: 7px;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+/* Código de barras */
+.barcode {
+  margin-top: 2px;
+  height: 26px;
+  margin-right: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    #000 0px,
+    #000 1px,
+    #fff 1px,
+    #fff 2px,
+    #000 2px,
+    #000 4px,
+    #fff 4px,
+    #fff 5px,
+    #000 5px,
+    #000 7px,
+    #fff 7px,
+    #fff 9px
+  );
+}
+
+/* Código */
+.codigo {
+  font-size: 10px;
+  margin-top: 2px;
+  margin-right: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Barra lateral */
+.lateral {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background: #dca500;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- 🔊 ÁUDIO -->
+<audio id="meuAudio">
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<div class="folha">
+
+  <div class="etiqueta">
+
+    <div class="topo">
+      <div class="logo">embraco</div>
+      <div class="modelo">EM2S 80HLR</div>
+    </div>
+
+    <div class="bloco">
+
+      <div class="esq">
+        <div class="direita">THERMALLY PROTECTED</div>
+        <div class="linha direita">12.12 LRA</div>
+        <div class="linha flex">
+          <span>R134a</span>
+          <span>1 PH</span>
+        </div>
+      </div>
+
+      <div class="dir">
+        <div class="v">220VAC</div>
+        <div class="hz">60Hz</div>
+      </div>
+
+    </div>
+
+    <div class="rodape">
+      JOINVILLE-SC MADE IN BRAZIL &nbsp; NO START WITHOUT STARTING DEVICE
+    </div>
+
+    <div class="barcode"></div>
+
+    <div class="codigo">
+      <span>513301024</span>
+      <span>04/03/2026</span>
+      <span>HB9812WR</span>
+    </div>
+
+    <div class="lateral"></div>
+
+  </div>
+
+</div>
+
+<!-- 🎯 SCRIPT -->
+<script>
+let jaTocou = false;
+
+function iniciarAudio() {
+  if (!jaTocou) {
+    const audio = document.getElementById("meuAudio");
+
+    audio.play().catch(e => {
+      console.log("Bloqueado:", e);
+    });
+
+    jaTocou = true;
+  }
+}
+
+// Scroll
+window.addEventListener("scroll", iniciarAudio);
+
+// Clique
+window.addEventListener("click", iniciarAudio);
+
+// Toque (celular)
+window.addEventListener("touchstart", iniciarAudio);
+</script>
+
+</body>
+</html>
