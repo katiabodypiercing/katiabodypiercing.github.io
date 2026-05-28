@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Kátia Body Piercing - Em Construção</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        background: #000;
+        color: white;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background:
+            radial-gradient(circle at 20% 30%, rgba(255,215,0,0.08), transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(255,215,0,0.05), transparent 40%),
+            linear-gradient(180deg, #000000, #0a0a0a, #000000);
+    }
+
+    .construction-container {
+        text-align: center;
+        padding: 20px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    h1 {
+        margin: 25px 0;
+        letter-spacing: 3px;
+        font-size: 26px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .subtitle {
+        color: gold;
+        margin-bottom: 25px;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .divider {
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, gold, transparent);
+        margin: 0 auto;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 24px;
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        color: #aaa;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 13px;
+        transition: 0.3s;
+    }
+
+    .back-btn:hover {
+        border-color: gold;
+        color: gold;
+        background: rgba(255, 215, 0, 0.05);
+    }
+    </style>
+</head>
+<body>
+
+<div class="construction-container">
+    <!-- Primeira barrinha de divisão -->
+    <div class="divider"></div>
+
+    <h1>Em Construção</h1>
+    <p class="subtitle">Novidades estão chegando por aqui!</p>
+
+    <!-- Segunda barrinha de divisão -->
+    <div class="divider"></div>
+
+    <!-- Botão opcional para voltar à página principal caso o cliente caia aí sem querer -->
+    <a href="index.html" class="back-btn">⬅ Voltar ao Início</a>
+</div>
+
+</body>
+</html>
